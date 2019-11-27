@@ -22,7 +22,7 @@ exports.handler = (event, context, callback) => {
   var params = {
     deploymentId: deploymentId,
     lifecycleEventHookExecutionId: lifecycleEventHookExecutionId,
-    status: "Succeeded" // status can be 'Succeeded' or 'Failed'
+    status: "Failed" // status can be 'Succeeded' or 'Failed'
   };
 
   // Pass AWS CodeDeploy the prepared validation test results.
