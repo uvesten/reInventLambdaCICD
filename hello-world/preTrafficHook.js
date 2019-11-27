@@ -2,7 +2,7 @@ const aws = require("aws-sdk");
 const codedeploy = new aws.CodeDeploy({ apiVersion: "2014-10-06" });
 
 exports.handler = (event, context, callback) => {
-  console.log("Entering PreTraffic Hook - for failure!");
+  console.log("Entering PreTraffic Hook - for success!");
   console.log(JSON.stringify(event));
 
   //Read the DeploymentId from the event payload.
