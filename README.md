@@ -1,6 +1,6 @@
 # Lambda CICD 
 
-git clone https://git-codecommit.us-east-1.amazonaws.com/v1/repos/reInventLambdaCICD
+git clone https://github.com/nvashish123/reInventLambdaCICD.git
 
 ```bash
 sam package  --output-template-file packaged.yaml  --s3-bucket vashi-lambda-code
