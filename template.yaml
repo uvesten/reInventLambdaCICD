@@ -17,11 +17,11 @@ Resources:
       CodeUri: hello-world/
       Handler: app.lambdaHandler
       Runtime: nodejs10.x
-      AutoPublishAlias: prod
-      DeploymentPreference:
-        Type: Canary10Percent5Minutes
-        Hooks:
-          PreTraffic: !Ref CICDPreHookFunction
+      # AutoPublishAlias: prod
+      # DeploymentPreference:
+      #   Type: Canary10Percent5Minutes
+      #   Hooks:
+      #     PreTraffic: !Ref CICDPreHookFunction
 
       Events:
         HelloWorld:
