@@ -18,10 +18,10 @@ Resources:
       Handler: app.lambdaHandler
       Runtime: nodejs10.x
       AutoPublishAlias: prod
-      # DeploymentPreference:
-      #   Type: Canary10Percent5Minutes
-      #   Hooks:
-      #     PreTraffic: !Ref CICDPreHookFunction
+      DeploymentPreference:
+        Type: Canary10Percent5Minutes
+        Hooks:
+          PreTraffic: !Ref CICDPreHookFunction
 
       Events:
         HelloWorld:
@@ -30,21 +30,21 @@ Resources:
             Path: /hello
             Method: get
 
-  # CICDPreHookFunction:
-  #   Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-  #   Properties:
-  #     FunctionName: "CodeDeployHook_preTrafficHook1"
-  #     CodeUri: hello-world/
-  #     Handler: preTrafficHook.handler
-  #     Runtime: nodejs10.x
-  #     Timeout: 5
-  #     Policies:
-  #       - Version: "2012-10-17"
-  #         Statement:
-  #           - Effect: "Allow"
-  #             Action:
-  #               - "codedeploy:PutLifecycleEventHookExecutionStatus"
-  #             Resource: !Sub "arn:aws:codedeploy:${AWS::Region}:${AWS::AccountId}:deploymentgroup:${ServerlessDeploymentApplication}/*"  
+  CICDPreHookFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: "CodeDeployHook_preTrafficHook1"
+      CodeUri: hello-world/
+      Handler: preTrafficHook.handler
+      Runtime: nodejs10.x
+      Timeout: 5
+      Policies:
+        - Version: "2012-10-17"
+          Statement:
+            - Effect: "Allow"
+              Action:
+                - "codedeploy:PutLifecycleEventHookExecutionStatus"
+              Resource: !Sub "arn:aws:codedeploy:${AWS::Region}:${AWS::AccountId}:deploymentgroup:${ServerlessDeploymentApplication}/*"  
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
